@@ -1,12 +1,17 @@
 const path = require("path");
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({ actions, loaders }) => {
   const extraConfig = {
     module: {
       rules: [
         {
           test: /\.(scss)$/,
-          use: ["style-loader", "css-loader", "sass-loader"]
+          use: [
+            loaders.style(),
+            loaders.css(),
+            // loaders.postcss({ plugins: postCssPlugins }),
+            "sass-loader"
+          ]
         }
       ]
     }

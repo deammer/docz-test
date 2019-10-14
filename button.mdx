@@ -1,0 +1,45 @@
+---
+name: Button
+route: /
+---
+
+import { Playground, Props } from "docz";
+import Button from "./src/Button";
+
+# Button
+
+<Props of={Button} />
+
+## Defaults
+
+I would like to add some spacing between the `Playground` components.
+
+<Playground>
+  <Button type="submit">Click me</Button>
+</Playground>
+
+<Playground>
+  <Button type="button" purpose="secondary">
+    Secondary button
+  </Button>
+</Playground>
+
+<Playground>
+  <Button type="button" purpose="danger">
+    Dangerous action
+  </Button>
+</Playground>
+
+## Disabled
+
+<Playground>
+  <Button type="submit" disabled>
+    Click me
+  </Button>
+  <Button type="button" purpose="secondary" disabled>
+    Secondary button
+  </Button>
+  <Button type="button" purpose="danger" disabled>
+    Dangerous action
+  </Button>
+</Playground>

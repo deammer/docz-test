@@ -3,10 +3,60 @@
 }
 
 .button {
-  background: purple;
-  border: 0;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  padding: 16px;
+  border: 2px solid #3243b2;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell,
+    Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, Arial;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  // height: 2.75rem;
+  letter-spacing: 0.1em;
+  line-height: 1.0625rem;
+  padding: 0.87681rem 1.875rem;
+  text-transform: uppercase;
+  vertical-align: top;
+
+  + .button {
+    margin-left: 0.5rem;
+  }
+
+  &.primary {
+    background: #3243b2;
+    color: white;
+
+    &:hover {
+      background: #27348a;
+      border-color: #27348a;
+    }
+  }
+
+  &.secondary {
+    background: #fff;
+    color: #3243b2;
+
+    &:hover {
+      background: #27348a10;
+      border-color: #27348a;
+      color: #27348a;
+    }
+  }
+
+  &.danger {
+    background: #fff;
+    border-color: #ff6052;
+    color: #ff6052;
+
+    &:hover {
+      background: #ff311f10;
+      border-color: #ff311f;
+      color: #ff311f;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }
