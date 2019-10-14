@@ -1,38 +1,26 @@
 # docz-test
 
-This is a barebones repository to help test [a problem with Docz's build process](https://github.com/doczjs/docz/issues/1118) using `style-loader`.
+This is an attempt to wrap the `<Playground>` component inside some custom markup.
 
-```shell
-yarn install
-yarn build
-```
+Relevant code:
 
-This should show an error like this:
+1. the `src/gatsby-theme-docz/components/Logo/index.js` file is where I'm shadowing the `Playground` component
+2. the `button.mdx` file is where I'm attempting to consume the component.
 
-```shell
-  105 |
-  106 | function insertStyleElement(options) {
-> 107 |   var style = document.createElement('style');
-      | ^
-  108 |
-  109 |   if (typeof options.attributes.nonce === 'undefined') {
-  110 |     var nonce = typeof __webpack_nonce__ !== 'undefined' ? __webpack_nonce__ : null;
+## Things I've tried
 
+1. importing the custom `Playground` component using a relative path:
 
-  WebpackError: ReferenceError: document is not defined
+   ```js
+   import { Playground } from "./src/gatsby-theme-docz/components/Playground";
+   ```
 
-  - injectStylesIntoStyleTag.js:107 insertStyleElement
-    node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js:107:1
+   ➡️ this results in a timeout, probably caused by a circular reference
 
-  - injectStylesIntoStyleTag.js:219 addStyle
-    node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js:219:1
+2. importing the `Playground` component from `docz`:
 
-  - injectStylesIntoStyleTag.js:94 addStylesToDom
-    node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js:94:1
+   ```js
+   import { Playground } from "docz";
+   ```
 
-  - injectStylesIntoStyleTag.js:251 ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js.module.exports
-    node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js:251:1
-
-  - style.scss?00aa:12 Object.../src/style.scss
-    src/style.scss?00aa:12:94
-```
+   ➡️ this renders the original component without the custom code
