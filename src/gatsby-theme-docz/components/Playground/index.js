@@ -1,5 +1,5 @@
 import React from "react";
-import { Playground as OriginalPlayground } from "gatsby-theme-docz";
+import { Playground as OriginalPlayground } from "gatsby-theme-docz/src/components/Playground";
 
 export const Playground = props => (
   <div style={{ background: "red", padding: 15 }}>
